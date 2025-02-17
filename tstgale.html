@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiCam - Galeria de Imagens</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f0f2f5; }
+        .header { text-align: center; padding: 20px; background-color: #007BFF; color: white; }
+        .content { padding: 20px; }
+        .image-card img { max-height: 150px; object-fit: cover; }
+        .card { margin-bottom: 20px; }
+        .menu-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #fff;
+            border-top: 1px solid #ccc;
+            display: flex;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+            z-index: 1000;
+        }
+        .menu-bar a {
+            text-decoration: none;
+            color: #007BFF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+        .menu-bar a.active { color: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h3>MultiCam - Galeria de Imagens</h3>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Galeria de Imagens -->
+        <h5>Imagens Salvas</h5>
+        <div class="row" id="gallery">
+            <!-- As imagens serão carregadas aqui dinamicamente -->
+        </div>
+    </div>
+
+    <!-- Menu de Navegação -->
+    <div class="menu-bar">
+        <div class="menu-item">
+            <a href="./tst.html" class="active">
+                <i class="fas fa-home"></i>
+                Início
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="./tst4.html">
+                <i class="fas fa-cogs"></i>
+                Configurações
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="./tstgale.html">
+                <i class="fas fa-image"></i>
+                Imagens
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="./tst2.html">
+                <i class="fas fa-chart-line"></i>
+                Gráficos
+            </a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Função para carregar as imagens salvas
+        function loadGallery() {
+            // Exemplo de imagens salvas (deve ser substituído por imagens reais ou um banco de dados)
+            const images = [
+                { src: './61vNYWH63WL._AC_UF894,1000_QL80_.jpg', title: 'Amostra 01' },
+                { src: './Figura-1-Microscopia-da-amostra-colhida-para-cultura-fungica-A-Fotomicroscopia-da.png', title: 'Amostra 02' }
+            ];
+
+            const galleryContainer = document.getElementById('gallery');
+            galleryContainer.innerHTML = ''; // Limpa a galeria antes de carregar as novas imagens
+
+            images.forEach((image, index) => {
+                const col = document.createElement('div');
+                col.className = 'col-6 col-md-4 col-lg-3'; // Responsivo
+                col.innerHTML = `
+                    <div class="card image-card">
+                        <img src="${image.src}" class="card-img-top" alt="${image.title}">
+                        <div class="card-body">
+                            <h6 class="card-title">${image.title}</h6>
+                            <button class="btn btn-danger btn-sm" onclick="deleteImage(${index})">Excluir</button>
+                        </div>
+                    </div>
+                `;
+                galleryContainer.appendChild(col);
+            });
+        }
+
+        // Função para excluir uma imagem
+        function deleteImage(index) {
+            const confirmDelete = confirm("Tem certeza que deseja excluir esta imagem?");
+            if (confirmDelete) {
+                alert(`Imagem ${index + 1} excluída!`);
+                loadGallery(); // Atualiza a galeria após exclusão
+            }
+        }
+
+        // Carrega as imagens quando a página for carregada
+        loadGallery();
+    </script>
+</body>
+</html>

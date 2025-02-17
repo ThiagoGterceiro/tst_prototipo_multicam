@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiCam - Interface Padronizada</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { background-color: #f3f6f9; color: #333; }
+        .header { background-color: #007BFF; color: #fff; text-align: center; padding: 1.5rem 0; border-radius: 0 0 2rem 2rem; }
+        .menu-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #fff;
+            border-top: 1px solid #ccc;
+            display: flex;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+            z-index: 1000;
+        }
+        .menu-bar a {
+            text-decoration: none;
+            color: #007BFF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+        .menu-bar a.active { color: #0056b3; }
+        .card { margin: 1rem; border-radius: 1rem; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        .card-title { color: #007BFF; }
+        .capture-btn {
+            position: fixed;
+            bottom: 4rem;
+            right: 1.5rem;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .capture-btn:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <h2>MultiCam</h2>
+    <p>Sincronização de Câmeras Simplificada</p>
+</div>
+
+<!-- Dashboard -->
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Próxima Captura</h5>
+            <p class="card-text">Em 5 minutos</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Dispositivos Conectados</h5>
+            <p class="card-text">6 dispositivos ativos</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Imagens Capturadas</h5>
+            <p class="card-text">120 imagens salvas</p>
+        </div>
+    </div>
+</div>
+
+<!-- Capture Button -->
+<a href="./tst3.html">
+<button class="capture-btn">
+    <i class="fas fa-camera"></i></button>
+</a>
+
+<!-- Menu de Navegação -->
+<div class="menu-bar">
+    <a href="./tst.html" class="active">
+        <i class="fas fa-home"></i>
+        <span>Início</span>
+    </a>
+    <a href="./tst4.html">
+        <i class="fas fa-cogs"></i>
+        <span>Configurações</span>
+    </a>
+    <a href="./tstgale.html">
+        <i class="fas fa-image"></i>
+        <span>Imagens</span>
+    </a>
+    <a href="./tst2.html">
+        <i class="fas fa-chart-line"></i>
+        <span>Gráficos</span>
+    </a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
