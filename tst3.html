@@ -130,14 +130,16 @@
     </div>
 
 <script>
-// Iniciar a câmera
-navigator.mediaDevices.getUserMedia({ video: true })
-    .then(function(stream) {
-        document.getElementById('camera').srcObject = stream;
-    })
-    .catch(function(error) {
-        console.error('Erro ao acessar a câmera:', error);
-    });
+// Iniciar a câmera frontal
+navigator.mediaDevices.getUserMedia({ 
+    video: { facingMode: 'user' }  // 'user' refere-se à câmera frontal
+})
+.then(function(stream) {
+    document.getElementById('camera').srcObject = stream;
+})
+.catch(function(error) {
+    console.error('Erro ao acessar a câmera:', error);
+});
 
 // Capturar imagem manualmente
 function captureImage() {
