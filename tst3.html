@@ -131,15 +131,30 @@
 
 <script>
 // Iniciar a câmera frontal
-navigator.mediaDevices.getUserMedia({ 
-    video: { facingMode: { exact: "user" } }  // Garante que a câmera frontal será usada
-})
-.then(function(stream) {
-    document.getElementById('camera').srcObject = stream;
-})
-.catch(function(error) {
-    console.error('Erro ao acessar a câmera:', error);
-});
+navigator.mediaDevices.enumerateDevices()
+    .then(function(devices) {
+        const videoDevices = devices.filter(device => device.kind === 'videoinput');
+        const frontCamera = videoDevices.find(device => device.label.toLowerCase().includes("front") || device.facing === "user");
+        
+        const constraints = {
+            video: {
+                deviceId: frontCamera ? { exact: frontCamera.deviceId } : undefined,
+                facingMode: "user" // Garantir câmera frontal se possível
+            }
+        };
+
+        // Tenta acessar a câmera com as restrições
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then(function(stream) {
+                document.getElementById('camera').srcObject = stream;
+            })
+            .catch(function(error) {
+                console.error('Erro ao acessar a câmera:', error);
+            });
+    })
+    .catch(function(error) {
+        console.error('Erro ao listar dispositivos de vídeo:', error);
+    });
 
 
 // Capturar imagem manualmente
